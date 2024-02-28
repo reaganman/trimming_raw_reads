@@ -8,9 +8,9 @@ options=':h:l:d:'
 while getopts $options option; do
     case "$option" in
         h) echo "$usage"; exit;;
-	l) l=$OPTARG;;
-	d) d=$OPTARG;;
-	:) printf "missing argument for -%s\n" "$OPTARG" >&2; echo "$usage" >&2; exit 1;;
+	    l) l=$OPTARG;;
+	    d) d=$OPTARG;;
+	    :) printf "missing argument for -%s\n" "$OPTARG" >&2; echo "$usage" >&2; exit 1;;
        \?) printf "illegal option: -%s\n" "$OPTARG" >&2; echo "$usage" >&2; exit 1;;
      esac
 done
@@ -19,7 +19,7 @@ echo $l
 echo $d
 
 # mandatory arguments
-if [ ! "$l" ] || [ ! "$d"]; then
+if [ ! "$l" ] || [ ! "$d" ]; then
     echo "arguments -l and -d must be provided"
     echo "$usage" >&2; exit 1
 fi
@@ -34,30 +34,30 @@ module load fastp/0.20.1
 echo "create file storing environment"
 mkdir -p sra_files
 mkdir -p raw_reads
-mkdir -p cleaned_reads/merged_reads
-mkdir -p cleaned_reads/unmerged_reads
+mkdir -p cleaned_reads/remix1_merged_reads
+mkdir -p cleaned_reads/remix1_unmerged_reads
 
-echo "Downloading SRA files from the given list of accessions"
-module load sra-toolkit/3.0.2
-cd sra_files
-prefetch --max-size 800G -O ./ --option-file ../${l}
-ls | grep SRR > sra_list
-cd ..
-echo "SRA files were downloaded in current directory"
-echo ""
+#echo "Downloading SRA files from the given list of accessions"
+#module load sra-toolkit/3.0.2
+#cd sra_files
+#prefetch --max-size 800G -O ./ --option-file ../${l}
+#ls | grep SRR > sra_list
+#cd ..
+#echo "SRA files were downloaded in current directory"
+#echo ""
 
-echo "Getting fastq files from SRA files"
-cd sra_files
-while read i; do 
-	cd "$i" 
-	fastq-dump --split-files --gzip "$i".sra 
-	# the --split-files option is needed for PE data
-	mv "$i"*.fastq.gz ../../raw_reads/ 
-	cd ..
-done<sra_list
-cd ..
-module unload sra-toolkit/3.0.2
-echo "Done"
+#echo "Getting fastq files from SRA files"
+#cd sra_files
+#while read i; do 
+#	cd "$i" 
+#	fastq-dump --split-files --gzip "$i".sra 
+#	# the --split-files option is needed for PE data
+#	mv "$i"*.fastq.gz ../../raw_reads/ 
+#	cd ..
+#done<sra_list
+#cd ..
+#module unload sra-toolkit/3.0.2
+#echo "Done"
 
 
 ###################################
@@ -103,8 +103,8 @@ fastp -i "$z"_1.fastq.gz -I "$z"_2.fastq.gz \
       -u 40 -l 15 \
       --adapter_sequence AGATCGGAAGAGCACACGTCTGAACTCCAGTCA \
       --adapter_sequence_r2 AGATCGGAAGAGCGTCGTGTAGGGAAAGAGTGT \
-      -M 20 -W 4 -5 -3 \
-      -c 
+      -M 25 -W 4 -5 -3 \
+      -c  
 cd ../cleaned_reads/merged_reads
 gzip "$z"_merged.fastq
 cd ../../raw_reads
@@ -123,6 +123,5 @@ cd ${d}/cleaned_reads/merged_reads
 pwd
 while read i; do 
 	fastqc "$i"_merged.fastq.gz # insert description here
-done<${d}/sra_files/sra_list
-
- }
+done < "${d}/sra_files/sra_list"
+}

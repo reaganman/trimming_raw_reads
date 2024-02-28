@@ -1,28 +1,27 @@
 # Trimming Raw Reads Worksheet
 
 <!--- Write name below --->
-## Name: 
+## Name: Reagan McKee
 
 <!--- For this worksheet, answer the following questions--->
 
 ## Q1: What does "cleaning" your reads mean?
-Answer:
+Answer: Removeing position and reads with low quality and removing the adapter sequences
 
 ### Q2: Open the script called "trim_raw_reads.sh". For every line that says ```insert description here```, replace that text with a description of what the line will do
 
 ### Q4: Attach an image of the plot from fastqc showing the average base quality from your reads files
-![before-trimming-PHRED-plot-1](./images/<plot-for-reads1>)
-![before-trimming-PHRED-plot-1](./images/<plot-for-reads2>)
+![before-trimming-PHRED-plot-1](./images/fastqc_plot.png)
 
 ---
 
 ## The following questions pertain to your first fastp run (without altering the parameters)
 ### Q5: How many reads were there in the R1 file before filtering?
-Answer:
+Answer: 25
 ### Q6: How many bases were there in the R1 file before filtering?
-Answer:
+Answer: 2.5k
 ### Q7: What proportion of bases were above PHRED score of 20 before filtering?
-Answer: 
+Answer: All of them 
 ### Q8: What proportion of bases were above PHRED score of 30 before filtering?
 Answer: 
 

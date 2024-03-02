@@ -55,17 +55,18 @@ Answer: The quality scores were not the same so reads were not filtered evenly
 ### Q23: What parameters did you change?
 Answer: -M from 20 to 25
 ### Q24: How did you expect this to change the filtering results (be specific)?
-Answer: Not very much because most of the bases already had a phred score > 25
+Answer: Not very much because most of the bases already had a phred score > 20. Other than that ther might be a slight decrease in the number of merged reads. 
 ### Q25: Explain the results. Did the change cause an effect that matched your expectations? Use information from the fastp output to explain.
-Answer: 
+Answer: 12198733 meged and filterd reads in remix1 compared to 12295196 originally so there were 96463 new reads filtered
+THis makes since since before reads with a mimum average score of 20 would be merged.
 
 ---
 
-## The following questions pertain to Remix 2 (the first time you change fastp parameters)
+## The following questions pertain to Remix 2 (the second time you change fastp parameters)
 ### Q26: What parameters did you change?
-Answer: 
+Answer: -l from 15 to 10
 ### Q27: How did you expect this to change the filtering results (be specific)?
-Answer: 
+Answer: There might be more reads merged because the size total size after filtering could be less
 ### Q28: Explain the results. Did the change cause an effect that matched your expectations? Use information from the fastp output to explain.
-Answer: 
+Answer: There were 12305164 merged and filtered reads in remix2, mean that 9968 more reads were merged after filtering, matching expectations.
 

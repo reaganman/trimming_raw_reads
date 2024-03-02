@@ -18,36 +18,36 @@ Answer: Removeing position and reads with low quality and removing the adapter s
 
 ## The following questions pertain to your first fastp run (without altering the parameters)
 ### Q5: How many reads were there in the R1 file before filtering?
-Answer: 33967298 sequences
+Answer: 33967298
 ### Q6: How many bases were there in the R1 file before filtering?
-Answer: 101 in each sequence
+Answer: 3430697098
 ### Q7: What proportion of bases were above PHRED score of 20 before filtering?
-Answer: All of them 
+Answer: 95%
 ### Q8: What proportion of bases were above PHRED score of 30 before filtering?
-Answer: Almost all of them
+Answer: 92%
 
 ### Q13: How many reads were there in the R2 file before filtering?
 Answer: 33967298 sequences
 ### Q14: How many bases were there in the R2 file before filtering?
-Answer: 101 
+Answer: 3430697098
 ### Q15: What proportion of bases were above PHRED score of 20 before filtering?
-Answer: All
+Answer: 95
 ### Q16: What proportion of bases were above PHRED score of 30 before filtering?
-Answer: All
+Answer: 90
 
 ### Q17: How many reads were there in the merged file after filtering?
-Answer: 12083667 sequences 
+Answer: 12295196
 ### Q18: How many bases were there in the merged file after filtering?
-Answer: 	15-171 per sequence
+Answer: 1750796378
 ### Q19: What proportion of bases in the merged file were above PHRED score of 20 after filtering?
-Answer: All
+Answer: 99
 ### Q20: What proportion of bases in the merged file were above PHRED score of 30 after filtering?
-Answer: All
+Answer: 95
 
 ### Q21: What is the difference between the merged and unmerged files (in principle, not quantitatively)?
-Answer: 
+Answer: unmerged files represent the seperate reads sequenced from forward and reverse strands in paired end sewuencing
 ### Q22: Why are the unmerged files for R1 and R2 different lengths?
-Answer:
+Answer: The quality scores were not the same so reads were not filtered evenly
 
 ---
 
